@@ -167,7 +167,6 @@ const PROTECTED_PATHS: string[] = [
   // GitHub Actions CI/CD workflows — self-build must not break deployments
   ".github/workflows/desktop-build.yml",
   ".github/workflows/ci.yml",
-  ".github/workflows/sync-to-architabot.yml",
   // Chat router core logic — self-build may only patch, never fully rewrite
   // (Note: self_multi_file_modify with action="patch" is still allowed)
 ];
@@ -2089,7 +2088,6 @@ export async function pushToGitHub(
   }
 
   const REPOS = [
-    { name: "architabot", remote: `https://${GITHUB_PAT}@github.com/leego972/architabot.git` },
     { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git` },
   ];
 
@@ -2106,7 +2104,7 @@ export async function pushToGitHub(
       execSync('git commit -m "Initial production state" --allow-empty', { cwd: getProjectRoot(), encoding: "utf-8" });
       // Fetch the latest from the primary repo so we have a proper history
       try {
-        execSync(`git remote add origin https://${GITHUB_PAT}@github.com/leego972/architabot.git`, { cwd: getProjectRoot(), encoding: "utf-8" });
+        execSync(`git remote add origin https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git`, { cwd: getProjectRoot(), encoding: "utf-8" });
         execSync("git fetch origin main --depth=1 2>&1", { cwd: getProjectRoot(), encoding: "utf-8", timeout: 30000 });
         // Reset to the fetched state but keep our working tree changes
         execSync("git reset --soft origin/main 2>&1", { cwd: getProjectRoot(), encoding: "utf-8" });
@@ -2259,6 +2257,6 @@ export function getGitHubIntegrationStatus(): {
   return {
     available: !!process.env.GITHUB_PAT,
     patConfigured: !!process.env.GITHUB_PAT,
-    repos: ["leego972/architabot", "Knut-enterprises/archibald-titan-ai"],
+    repos: ["Knut-enterprises/archibald-titan-ai"],
   };
 }

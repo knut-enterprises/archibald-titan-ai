@@ -14710,7 +14710,6 @@ async function pushToGitHub(files, commitMessage) {
     };
   }
   const REPOS = [
-    { name: "architabot", remote: `https://${GITHUB_PAT}@github.com/leego972/architabot.git` },
     { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git` }
   ];
   try {
@@ -14723,7 +14722,7 @@ async function pushToGitHub(files, commitMessage) {
       execSync("git add -A", { cwd: getProjectRoot(), encoding: "utf-8" });
       execSync('git commit -m "Initial production state" --allow-empty', { cwd: getProjectRoot(), encoding: "utf-8" });
       try {
-        execSync(`git remote add origin https://${GITHUB_PAT}@github.com/leego972/architabot.git`, { cwd: getProjectRoot(), encoding: "utf-8" });
+        execSync(`git remote add origin https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git`, { cwd: getProjectRoot(), encoding: "utf-8" });
         execSync("git fetch origin main --depth=1 2>&1", { cwd: getProjectRoot(), encoding: "utf-8", timeout: 3e4 });
         execSync("git reset --soft origin/main 2>&1", { cwd: getProjectRoot(), encoding: "utf-8" });
       } catch (fetchErr) {
@@ -14857,8 +14856,7 @@ var init_self_improvement_engine = __esm({
       "server/user-secrets-router.ts",
       // GitHub Actions CI/CD workflows — self-build must not break deployments
       ".github/workflows/desktop-build.yml",
-      ".github/workflows/ci.yml",
-      ".github/workflows/sync-to-architabot.yml"
+      ".github/workflows/ci.yml"
       // Chat router core logic — self-build may only patch, never fully rewrite
       // (Note: self_multi_file_modify with action="patch" is still allowed)
     ];
