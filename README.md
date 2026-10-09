@@ -47,7 +47,7 @@ Archibald Titan AI is an advanced, unified DevSecOps and AI agent platform. It c
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone https://github.com/leego972/archibald-titan-ai.git
+   git clone https://github.com/Knut-enterprises/archibald-titan-ai.git
    cd archibald-titan-ai
    \`\`\`
 

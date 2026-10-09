@@ -99,7 +99,7 @@ function getProjectRoot(): string {
       }
       log.info("[SelfImprovement] Source files not found — cloning repo into /tmp/titan-src");
       execSync(
-        `git clone --depth=1 https://${pat}@github.com/leego972/archibald-titan-ai.git ${CLONE_DIR}`,
+        `git clone --depth=1 https://${pat}@github.com/Knut-enterprises/archibald-titan-ai.git ${CLONE_DIR}`,
         { timeout: 120000, encoding: "utf-8" }
       );
       execSync('git config user.email "archibaldtitan@gmail.com"', { cwd: CLONE_DIR, encoding: "utf-8" });
@@ -2090,7 +2090,7 @@ export async function pushToGitHub(
 
   const REPOS = [
     { name: "architabot", remote: `https://${GITHUB_PAT}@github.com/leego972/architabot.git` },
-    { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/leego972/archibald-titan-ai.git` },
+    { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git` },
   ];
 
   try {
@@ -2259,6 +2259,6 @@ export function getGitHubIntegrationStatus(): {
   return {
     available: !!process.env.GITHUB_PAT,
     patConfigured: !!process.env.GITHUB_PAT,
-    repos: ["leego972/architabot", "leego972/archibald-titan-ai"],
+    repos: ["leego972/architabot", "Knut-enterprises/archibald-titan-ai"],
   };
 }

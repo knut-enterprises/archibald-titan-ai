@@ -13471,7 +13471,7 @@ function getProjectRoot() {
       }
       log23.info("[SelfImprovement] Source files not found \u2014 cloning repo into /tmp/titan-src");
       execSync(
-        `git clone --depth=1 https://${pat}@github.com/leego972/archibald-titan-ai.git ${CLONE_DIR}`,
+        `git clone --depth=1 https://${pat}@github.com/Knut-enterprises/archibald-titan-ai.git ${CLONE_DIR}`,
         { timeout: 12e4, encoding: "utf-8" }
       );
       execSync('git config user.email "archibaldtitan@gmail.com"', { cwd: CLONE_DIR, encoding: "utf-8" });
@@ -14711,7 +14711,7 @@ async function pushToGitHub(files, commitMessage) {
   }
   const REPOS = [
     { name: "architabot", remote: `https://${GITHUB_PAT}@github.com/leego972/architabot.git` },
-    { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/leego972/archibald-titan-ai.git` }
+    { name: "archibald-titan-ai", remote: `https://${GITHUB_PAT}@github.com/Knut-enterprises/archibald-titan-ai.git` }
   ];
   try {
     const gitDir = path.join(getProjectRoot(), ".git");
@@ -68431,7 +68431,7 @@ var releasesRouter = router({
   syncFromGitHub: publicProcedure.mutation(async () => {
     const db = await getDb();
     if (!db) throw new TRPCError5({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-    const GITHUB_OWNER = "leego972";
+    const GITHUB_OWNER = "Knut-enterprises";
     const GITHUB_REPO = "archibald-titan-ai";
     const headers = {
       Accept: "application/vnd.github.v3+json",
@@ -68623,7 +68623,7 @@ function registerGitHubSyncRoute(app) {
     try {
       const db = await getDb();
       if (!db) return res.status(503).json({ error: "Database unavailable" });
-      const GITHUB_OWNER = "leego972";
+      const GITHUB_OWNER = "Knut-enterprises";
       const GITHUB_REPO = "archibald-titan-ai";
       const headers = {
         Accept: "application/vnd.github.v3+json",

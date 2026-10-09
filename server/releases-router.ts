@@ -269,7 +269,7 @@ export const releasesRouter = router({
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-    const GITHUB_OWNER = "leego972";
+    const GITHUB_OWNER = "Knut-enterprises";
     const GITHUB_REPO = "archibald-titan-ai";
     const headers: Record<string, string> = {
       Accept: "application/vnd.github.v3+json",
@@ -519,7 +519,7 @@ export function registerGitHubSyncRoute(app: Express) {
       const db = await getDb();
       if (!db) return res.status(503).json({ error: "Database unavailable" });
 
-      const GITHUB_OWNER = "leego972";
+      const GITHUB_OWNER = "Knut-enterprises";
       const GITHUB_REPO = "archibald-titan-ai";
       const headers: Record<string, string> = {
         Accept: "application/vnd.github.v3+json",
